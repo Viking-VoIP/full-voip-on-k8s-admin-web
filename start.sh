@@ -20,4 +20,5 @@ else
 	echo "Not importing Viking tables";
 fi
 
-service supervisor start
+#service supervisor start
+0
