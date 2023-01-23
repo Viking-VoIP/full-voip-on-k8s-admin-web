@@ -1,8 +1,7 @@
 #!/bin/bash
 
-bash /start_consul_agent.sh &
-
-sleep 3
+#bash /start_consul_agent.sh &
+#sleep 3
 
 DB_ADDRESS=$(consul kv get backend/db_address)
 DB_USER=$(consul kv get backend/db_user)
