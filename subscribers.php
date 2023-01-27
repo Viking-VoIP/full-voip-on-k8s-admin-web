@@ -4,7 +4,7 @@ function displayLogin() {
 header("WWW-Authenticate: Basic realm=\"Viking Management Platform\"");
 header("HTTP/1.0 401 Unauthorized");
 echo "<h2>Authentication Failure</h2>";
-echo "La contrase�a que ha introducido no es v�lida. Refresque la p�gina e int�ntelo de nuevo.";
+echo "Invalid username or password, please try again.";
 exit;
 }
 
@@ -184,6 +184,10 @@ $opts['fdd']['route_table'] = array(
   'maxlen'   => 45,
   'sort'     => true
 );
+$opts['fdd']['route_table']['values']['table'] = "ws_route_tables";
+$opts['fdd']['route_table']['values']['column'] = "id";
+$opts['fdd']['route_table']['values']['description'] = "name";
+
 $opts['fdd']['password'] = array(
   'name'     => 'Password',
   'default'    => '',
