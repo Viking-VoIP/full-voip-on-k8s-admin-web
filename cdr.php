@@ -4,7 +4,7 @@ function displayLogin() {
 header("WWW-Authenticate: Basic realm=\"Viking Management Platform\"");
 header("HTTP/1.0 401 Unauthorized");
 echo "<h2>Authentication Failure</h2>";
-echo "La contrase�a que ha introducido no es v�lida. Refresque la p�gina e int�ntelo de nuevo.";
+echo "Invalid password, please try again.";
 exit;
 }
 
