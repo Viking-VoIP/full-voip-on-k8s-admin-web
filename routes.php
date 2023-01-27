@@ -163,8 +163,12 @@ $opts['fdd']['provider_id'] = array(
   'name'     => 'Provider ID',
   'select'   => 'T',
   'maxlen'   => 45,
-  'sort'     => true
+  'sort'     => true,
 );
+$opts['fdd']['provider_id']['values']['table'] = "ws_providers";
+$opts['fdd']['provider_id']['values']['column'] = "id";
+$opts['fdd']['provider_id']['values']['description'] = "name";
+
 $opts['fdd']['lastchange'] = array(
   'name'     => 'Lastchange',
   'select'   => 'H',
