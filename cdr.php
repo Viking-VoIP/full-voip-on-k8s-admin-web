@@ -266,6 +266,18 @@ $opts['fdd']['context'] = array(
   'maxlen'   => 45,
   'sort'     => true
 );
+$opts['fdd']['route_table'] = array(
+  'name'     => 'Route table',
+  'select'   => 'T',
+  'maxlen'   => 45,
+  'sort'     => true
+);
+$opts['fdd']['rate_table'] = array(
+  'name'     => 'Rate table',
+  'select'   => 'T',
+  'maxlen'   => 45,
+  'sort'     => true
+);
 $opts['fdd']['last_app'] = array(
   'name'     => 'Last app',
   'select'   => 'T',
@@ -278,12 +290,6 @@ $opts['fdd']['last_arg'] = array(
   'maxlen'   => 256,
   'sort'     => true
 );
-$opts['fdd']['route_table'] = array(
-    'name'     => 'Route table',
-    'select'   => 'T',
-    'maxlen'   => 45,
-    'sort'     => true
-  );
 // Now important call to phpMyEdit
 require_once 'phpmyedit/phpMyEdit.class.php';
 new phpMyEdit($opts);
