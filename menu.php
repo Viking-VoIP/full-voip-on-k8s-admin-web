@@ -227,12 +227,12 @@ require "checklogin.inc";
 						<a id=asr href="custom_asr.php" target="Frame3">ASR by Destination</a>
 					</td>
 				</tr>
+-->
 				<tr style="display: none;" onMouseOver="this.className='highlight'" onMouseOut="this.className='normal'" onClick="document.getElementById('outgoing_view').click()">
 					<td nowrap="nowrap">
-						<a id=asr href="cdrsearch.php" target="Frame3">CDR Seach</a>
+						<a id=asr href="cdr.php" target="Frame3">CDRs</a>
 					</td>
 				</tr>
--->
 
 			</table>
 		</td></tr>
