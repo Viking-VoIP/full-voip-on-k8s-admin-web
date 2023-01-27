@@ -178,6 +178,12 @@ $opts['fdd']['rate_table'] = array(
   'maxlen'   => 45,
   'sort'     => true
 );
+$opts['fdd']['route_table'] = array(
+  'name'     => 'Route table',
+  'select'   => 'T',
+  'maxlen'   => 45,
+  'sort'     => true
+);
 $opts['fdd']['password'] = array(
   'name'     => 'Password',
   'default'    => '',
