@@ -166,7 +166,7 @@ $opts['fdd']['provider_id'] = array(
   'sort'     => true,
 );
 $opts['fdd']['provider_id']['values']['table'] = "ws_providers";
-$opts['fdd']['provider_id']['values']['column'] = "id";
+$opts['fdd']['provider_id']['values']['column'] = "symbol";
 $opts['fdd']['provider_id']['values']['description'] = "name";
 
 $opts['fdd']['lastchange'] = array(
