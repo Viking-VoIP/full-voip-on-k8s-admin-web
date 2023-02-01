@@ -1,82 +1,3 @@
-
---
--- Dumping data for table `pdt`
---
-
-LOCK TABLES `pdt` WRITE;
-/*!40000 ALTER TABLE `pdt` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pdt` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `pl_pipes`
---
-
-DROP TABLE IF EXISTS `pl_pipes`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `pl_pipes` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `pipeid` varchar(64) NOT NULL DEFAULT '',
-  `algorithm` varchar(32) NOT NULL DEFAULT '',
-  `plimit` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `pl_pipes`
---
-
-LOCK TABLES `pl_pipes` WRITE;
-/*!40000 ALTER TABLE `pl_pipes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `pl_pipes` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `purplemap`
---
-
-DROP TABLE IF EXISTS `purplemap`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `purplemap` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `sip_user` varchar(255) NOT NULL,
-  `ext_user` varchar(255) NOT NULL,
-  `ext_prot` varchar(16) NOT NULL,
-  `ext_pass` varchar(64) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `purplemap`
---
-
-LOCK TABLES `purplemap` WRITE;
-/*!40000 ALTER TABLE `purplemap` DISABLE KEYS */;
-/*!40000 ALTER TABLE `purplemap` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `re_grp`
---
-
-DROP TABLE IF EXISTS `re_grp`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `re_grp` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `reg_exp` varchar(128) NOT NULL DEFAULT '',
-  `group_id` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `group_idx` (`group_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `re_grp`
 --
 
 LOCK TABLES `re_grp` WRITE;
@@ -326,6 +247,15 @@ CREATE TABLE `subscriber` (
   KEY `username_idx` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `subscriber`
+--
+
+LOCK TABLES `subscriber` WRITE;
+/*!40000 ALTER TABLE `subscriber` DISABLE KEYS */;
+/*!40000 ALTER TABLE `subscriber` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `topos_d`
@@ -666,8 +596,43 @@ CREATE TABLE `ws_cdr` (
   PRIMARY KEY (`id`),
   KEY `crono_in_symbol` (`datetime_start`),
   KEY `crono_in_ip` (`datetime_start`,`received_ip`)
-) ENGINE=MyISAM AUTO_INCREMENT=10930559 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10930561 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ws_cdr`
+--
+
+LOCK TABLES `ws_cdr` WRITE;
+/*!40000 ALTER TABLE `ws_cdr` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ws_cdr` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ws_def_route_table`
+--
+
+DROP TABLE IF EXISTS `ws_def_route_table`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ws_def_route_table` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `areacode` varchar(64) NOT NULL,
+  `destination` varchar(45) NOT NULL,
+  `provider_list` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `areacode_UNIQUE` (`areacode`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ws_def_route_table`
+--
+
+LOCK TABLES `ws_def_route_table` WRITE;
+/*!40000 ALTER TABLE `ws_def_route_table` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ws_def_route_table` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `ws_distribution_strategy`
@@ -693,24 +658,6 @@ LOCK TABLES `ws_distribution_strategy` WRITE;
 INSERT INTO `ws_distribution_strategy` VALUES (1,'Hash on Call ID','0'),(2,'Hash on From-URI','1'),(3,'Hash on To-URI','2'),(4,'Hash on R-URI','3'),(5,'Round-Robin','4'),(6,'Hash on Auth-Username','5'),(7,'Random','6'),(8,'Weight-based','9'),(9,'Call Load','10');
 /*!40000 ALTER TABLE `ws_distribution_strategy` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `ws_new_table_1`
---
-
-DROP TABLE IF EXISTS `ws_new_table_1`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ws_new_table_1` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `areacode` varchar(45) DEFAULT NULL,
-  `destination` varchar(45) DEFAULT NULL,
-  `provider` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `areacode_UNIQUE` (`areacode`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
 
 --
 -- Table structure for table `ws_providers`
@@ -745,30 +692,117 @@ CREATE TABLE `ws_providers` (
 ) ENGINE=MyISAM AUTO_INCREMENT=44 DEFAULT CHARSET=latin1 CHECKSUM=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `ws_providers`
+--
+
+LOCK TABLES `ws_providers` WRITE;
+/*!40000 ALTER TABLE `ws_providers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ws_providers` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
--- Table structure for table `ws_route_tables`
+-- Table structure for table `ws_route_table_IDT`
 --
 
-DROP TABLE IF EXISTS `ws_route_tables`;
+DROP TABLE IF EXISTS `ws_route_table_IDT`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ws_route_tables` (
+CREATE TABLE `ws_route_table_IDT` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(64) NOT NULL,
+  `areacode` varchar(64) NOT NULL,
+  `destination` varchar(45) NOT NULL,
+  `provider_list` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  UNIQUE KEY `areacode_UNIQUE` (`areacode`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `ws_route_tables`
+-- Dumping data for table `ws_route_table_IDT`
 --
 
-LOCK TABLES `ws_route_tables` WRITE;
-/*!40000 ALTER TABLE `ws_route_tables` DISABLE KEYS */;
-INSERT INTO `ws_route_tables` VALUES (1,'ws_new_table_1');
-/*!40000 ALTER TABLE `ws_route_tables` ENABLE KEYS */;
+LOCK TABLES `ws_route_table_IDT` WRITE;
+/*!40000 ALTER TABLE `ws_route_table_IDT` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ws_route_table_IDT` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ws_route_table_idt`
+--
+
+DROP TABLE IF EXISTS `ws_route_table_idt`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ws_route_table_idt` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `areacode` varchar(64) NOT NULL,
+  `destination` varchar(45) NOT NULL,
+  `provider_list` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `areacode_UNIQUE` (`areacode`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ws_route_table_idt`
+--
+
+LOCK TABLES `ws_route_table_idt` WRITE;
+/*!40000 ALTER TABLE `ws_route_table_idt` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ws_route_table_idt` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ws_route_table_idt_routes`
+--
+
+DROP TABLE IF EXISTS `ws_route_table_idt_routes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ws_route_table_idt_routes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `areacode` varchar(64) NOT NULL,
+  `destination` varchar(45) NOT NULL,
+  `provider_list` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `areacode_UNIQUE` (`areacode`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ws_route_table_idt_routes`
+--
+
+LOCK TABLES `ws_route_table_idt_routes` WRITE;
+/*!40000 ALTER TABLE `ws_route_table_idt_routes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ws_route_table_idt_routes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ws_route_table_new_idt`
+--
+
+DROP TABLE IF EXISTS `ws_route_table_new_idt`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ws_route_table_new_idt` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `areacode` varchar(64) NOT NULL,
+  `destination` varchar(45) NOT NULL,
+  `provider_list` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `areacode_UNIQUE` (`areacode`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ws_route_table_new_idt`
+--
+
+LOCK TABLES `ws_route_table_new_idt` WRITE;
+/*!40000 ALTER TABLE `ws_route_table_new_idt` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ws_route_table_new_idt` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -789,6 +823,15 @@ CREATE TABLE `ws_routes` (
   UNIQUE KEY `route_name_UNIQUE` (`areacode`)
 ) ENGINE=MyISAM AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 CHECKSUM=1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ws_routes`
+--
+
+LOCK TABLES `ws_routes` WRITE;
+/*!40000 ALTER TABLE `ws_routes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ws_routes` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `ws_settings`
@@ -817,7 +860,6 @@ CREATE TABLE `ws_settings` (
 
 LOCK TABLES `ws_settings` WRITE;
 /*!40000 ALTER TABLE `ws_settings` DISABLE KEYS */;
-INSERT INTO `ws_settings` VALUES (7,'18.215.185.67',5060,'',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `ws_settings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -841,6 +883,14 @@ CREATE TABLE `ws_subscriber_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+--
+-- Dumping data for table `ws_subscriber_info`
+--
+
+LOCK TABLES `ws_subscriber_info` WRITE;
+/*!40000 ALTER TABLE `ws_subscriber_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ws_subscriber_info` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
 /*!50003 SET @saved_col_connection = @@collation_connection */ ;
@@ -918,4 +968,5 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-31 19:46:49
+-- Dump completed on 2023-02-01 23:19:47
+[ec2-user@ip-10-0-3-129 ~]$
