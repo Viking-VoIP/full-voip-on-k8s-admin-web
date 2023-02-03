@@ -532,6 +532,19 @@ INSERT INTO `version` VALUES ('acc',5),('acc_cdrs',2),('address',6),('aliases',8
 UNLOCK TABLES;
 
 --
+-- Temporary table structure for view `view_route_tables`
+--
+
+DROP TABLE IF EXISTS `view_route_tables`;
+/*!50001 DROP VIEW IF EXISTS `view_route_tables`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE TABLE `view_route_tables` (
+  `TABLE_NAME` tinyint NOT NULL
+) ENGINE=MyISAM */;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `webusers`
 --
 
@@ -958,6 +971,26 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+--
+-- Final view structure for view `view_route_tables`
+--
+
+/*!50001 DROP TABLE IF EXISTS `view_route_tables`*/;
+/*!50001 DROP VIEW IF EXISTS `view_route_tables`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`admin`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `view_route_tables` AS select `information_schema`.`TABLES`.`TABLE_NAME` AS `TABLE_NAME` from `INFORMATION_SCHEMA`.`TABLES` where ((`information_schema`.`TABLES`.`TABLE_SCHEMA` = 'kamailio') and (`information_schema`.`TABLES`.`TABLE_NAME` like 'ws_route_table_%')) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
