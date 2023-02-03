@@ -1,11 +1,11 @@
 <?PHP
 
 function displayLogin() {
-header("WWW-Authenticate: Basic realm=\"Viking Management Platform\"");
-header("HTTP/1.0 401 Unauthorized");
-echo "<h2>Authentication Failure</h2>";
-echo "Invalid username or password, please try again.";
-exit;
+     header("WWW-Authenticate: Basic realm=\"Viking Management Platform\"");
+     header("HTTP/1.0 401 Unauthorized");
+     echo "<h2>Authentication Failure</h2>";
+     echo "Invalid username or password, please try again.";
+     exit;
 }
 
 require "conexion.inc";
@@ -79,7 +79,7 @@ require "checklogin.inc";
                               print_r($dbh->errorInfo());
                               print("Could not create the new table! Make sure the default table (ws_def_route_table) exists");
                           }
-                         MoveAndInsert($table);
+                         MoveAndInsert($table,$dbh);
                     }
                }
                
@@ -168,6 +168,11 @@ require "checklogin.inc";
                     </td>
                </tr>
                <tr>
+                    <td>
+                         <input type="checkbox" name="has_headers" id="has_headers" checked>File Contains Headers (Ignore forst line)</input>
+                    </tr>
+               </tr>
+               <tr>
                     <td colspan="2">
                          <input type="button" value="Upload" onClick="beforeSubmit();"/>
                     </td>
@@ -179,7 +184,7 @@ require "checklogin.inc";
 
 <?php
 
-function MoveAndInsert($table){
+function MoveAndInsert($table,$dbh){
      $target = "/tmp/"; 
      $target = $target . basename( $_FILES['uploaded']['name']) ; 
      $ok=1; 
@@ -187,8 +192,9 @@ function MoveAndInsert($table){
      {
 
           $separator = $_POST['separator'];
-          $sqldatetime = "LOAD DATA LOCAL INFILE '" . $target . "' INTO TABLE $table FIELDS TERMINATED BY ';' (areacode, description, @var1, effective_date) SET cost = replace(@var1, ',', '.');";
-          //print "<br>$sqldatetime<br>\n";
+          if(isset($_POST['has_headers'])) { $headers = " IGNORE 1 LINES"; }else { $headers=""; }
+          $sqldatetime = "LOAD DATA LOCAL INFILE '" . $target . "' INTO TABLE $table FIELDS TERMINATED BY '" . $separator . "' " . $headers . " (areacode, destination, provider_list);";
+          print "<br>$sqldatetime<br>\n";
           system("chown www-data $target");
           $stmt = $dbh->query($sqldatetime);
           if (!$stmt) {
