@@ -1002,4 +1002,3 @@ DELIMITER ;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2023-02-01 23:19:47
-[ec2-user@ip-10-0-3-129 ~]$
